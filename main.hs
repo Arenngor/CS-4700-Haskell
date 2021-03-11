@@ -88,32 +88,25 @@ main = do
     )
     ]
 
+
   {- Tests of reduceTree -}
   mapM testIt [
-    ("reduceTree 0 (\x y z -> x + y + z) tree1",
+    ("reduceTree 0 (\\x y z -> x + y + z) tree1",
       reduceTree 0 (\x y z -> x + y + z) tree1
     ),
-    ("reduceTree 1 (\x y z -> x * y * z) tree3",
+    ("reduceTree 1 (\\x y z -> x * y * z) tree3",
       reduceTree 1 (\x y z -> x * y * z) tree3
     ),
-    ("reduceTree 0 (\x y z -> x + y + z) tree4",
+    ("reduceTree 0 (\\x y z -> x + y + z) tree4",
       reduceTree 0 (\x y z -> x + y + z) tree4
     )
     ]
 
   {- Tests of mapTree -}
-  putStr "mapTree (\\x -> x * x) (insert 1 tree1)\n"
+  putStr "mapTree (\\x -> x * x) tree1\n"
   putStr (prettyFormat (mapTree (\x -> x * x) tree1))
-  putStr "mapTree (\\x -> x * x) (insert 1 tree3)\n"
+  putStr "mapTree (\\x -> x * x) tree3\n"
   putStr (prettyFormat (mapTree (\x -> x * x) tree3))
-
-  {- Tests of insert -}
-  putStr "prettyFormat (insert 1 tree1)\n"
-  putStr (prettyFormat (insert 1 tree1))
-  putStr "prettyFormat (insert 2 (insert 1 tree1))\n"
-  putStr (prettyFormat (insert 2 (insert 1 tree1)))
-  putStr "prettyFormat (insert 8 (insert 2 (insert 1 tree1)))\n"
-  putStr (prettyFormat (insert 8 (insert 2 (insert 1 tree1))))
 
   {- Tests of balance -}
   putStr "prettyFormat (balance tree1)\n"
@@ -121,10 +114,4 @@ main = do
   putStr "prettyFormat (balance tree4)\n"
   putStr (prettyFormat (balance tree4))
   putStr "prettyFormat (balance tree3)\n"
-  putStr (prettyFormat (insert 10 tree3))
-  putStr (prettyFormat (balance (insert 10 tree3)))
-  {- putStr "prettyFormat (balance (insert 1 tree1))\n"
-  putStr (prettyFormat (balance (insert 1 tree1)))
-  putStr "prettyFormat (balance (insert 2 (insert 1 tree1)))\n"
-  putStr (prettyFormat (balance (insert 2 (insert 1 tree1)))) -}
-
+  putStr (prettyFormat (balance tree3))
